@@ -1,0 +1,109 @@
+polina - S2dGHz1tE7hbIVEa
+
+router.get('/profile', checkUser, async (req, res) => {
+    try {
+        const user = await schemas.Users.findById(req.user.id);
+        if (user) {
+            res.json(user);
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (error) {
+        console.error('Error fetching user profile:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
+
+
+
+   const [cookies] = useCookies([]); 
+   const [profile, setProfile] = useState(null);
+
+   const token = cookies.jwt;
+
+   useEffect(() => {
+      const fetchUserProfile = async () => {
+         try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get('http://localhost:4000/profile', {
+               headers: {
+                  Authorization: `Bearer ${token}`,
+               },
+            });
+            setProfile(response.data);
+         } catch (error) {
+            console.error('Error fetching user profile:', error);
+         }
+      };
+
+      fetchUserProfile();
+   }, []);
+
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:false}))
+
+
+
+{lat: parseFloat(restaurant.lat), lng: parseFloat(restaurant.lng)}
+
+router.get('/restaurants', async (req, res) => {
+    const restaurants = schemas.Restaurants
+    const restData = await restaurants.find({}).exec()
+    if (restData) {
+        res.send(JSON.stringify(restData))
+    }
+})
+
+const [selectData, setData] = useState('')
+
+    useEffect(() => {
+        let processing = true
+        axiosFetchData(processing)
+        return () => {
+            processing = false
+        }
+    }, [])
+
+    const axiosFetchData = async (processing) => {
+        await axios.get('http://localhost:4000/restaurants')
+            .then(res => {
+                if (processing) {
+                    console.log(res.data)
+                }
+            })
+            .catch(err => console.log(err))
+    }
+
+
+className="w-full px-32 my-20 h-auto bg-[#FFB949] py-20"
+
+
+              responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                initialSlide: 2
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            }
+          ]

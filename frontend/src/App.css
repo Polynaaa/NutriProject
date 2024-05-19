@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.base {
+  font-size: 16px;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  background-color: #F5F5F5;
+}
+
+.logo {
+  font-family: 'Luckiest Guy';
+  font-size: 36px;
+}
+
+a {
+  color: #000;
+}
+
+a:hover {
+  color: #8CC498;
+}
+
+a.active {
+  color: #8CC498;
+}
+
+.title {
+  font-family: 'Montserrat';
+  font-weight: bold;
+  font-size: 20px;
+  margin: 20px 0 20px 0;
+}
+
+.slick-slide>div {
+  margin: 10px 10px;
+}
+
+.slick-arrow.slick-next,
+.slick-arrow.slick-prev {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  opacity: 0.8;
+  height: 35px;
+  width: 35px;
+  z-index: 100;
+  margin: 0 -40px;
+  box-shadow: 2px 2px rgba(131, 131, 131, 0.2);
+}
+
+.slick-arrow.slick-next:hover,
+.slick-arrow.slick-prev:hover {
+  background-color: white;
+  opacity: 1;
+  z-index: 100;
+}
+
+
+.slick-prev::before,
+.slick-next::before {
+  display: none;
+}
+
+
+.arrows {
+  height: 20px;
+  width: 20px;
+}
+
+@media screen and (min-width:600) {
+
+  .arrow.slick-arrow.slick-next,
+  .arrow.slick-arrow.slick-prev {
+    margin: 0 -10px;
+  }
+}
